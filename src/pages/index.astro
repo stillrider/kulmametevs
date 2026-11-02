@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import BookFeature from '../components/BookFeature.astro';
+import Contact from '../components/Contact.astro';
+import Hero from '../components/Hero.astro';
+import Memorials from '../components/Memorials.astro';
+import News from '../components/News.astro';
+import Timeline from '../components/Timeline.astro';
+---
+
+<Base
+  title="Мурзы Кульмаметьевы — дворянский род сибирских татар"
+  description="История рода мурз Кульмаметьевых: от большого князца Бегиша до причисления к российскому дворянству в 1796 году, книга о роде и памятные места."
+>
+  <Hero />
+  <main id="main">
+    <Timeline />
+    <BookFeature />
+    <Memorials />
+    <News />
+  </main>
+  <Contact />
+</Base>

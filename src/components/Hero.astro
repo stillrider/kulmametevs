@@ -1,0 +1,229 @@
+---
+import { Picture } from 'astro:assets';
+import { navigation } from '../data/home';
+import sheet from '../../images/legacy/200000000-rgia-f1411op1d2l507.jpeg';
+---
+
+<header class="hero on-ink">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="Мурзы Кульмаметьевы, на главную">
+      <img src="/favicon.svg" alt="" width="26" height="29" />
+      <span>Кульмаметьевы</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Основная навигация">
+      <ul>
+        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+    <details class="mobile-nav">
+      <summary>Меню</summary>
+      <nav aria-label="Мобильная навигация">
+        <ul>
+          {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+    </details>
+  </div>
+
+  <div class="wrap stage">
+    <div class="intro">
+      <p class="label">Дворянский род сибирских татар</p>
+      <h1>Мурзы Кульмаметьевы</h1>
+      <p class="lead">
+        Один из самых влиятельных татарских родов Сибири: от большого князца
+        Бегиша до дворянства, пожалованного Екатериной II.
+      </p>
+      <div class="actions">
+        <a class="primary" href="#history">История рода</a>
+        <a href="#book">Книга о роде</a>
+      </div>
+      <p class="source">
+        Герб № 140, Высочайше утверждённый 25 апреля 1796 года.
+        Лист 507 из собрания РГИА.
+      </p>
+    </div>
+
+    <figure class="sheet">
+      <Picture
+        src={sheet}
+        formats={['avif', 'webp']}
+        widths={[420, 640, 900, 1214]}
+        sizes="(max-width: 900px) 92vw, 40vw"
+        alt="Архивный лист: заголовок «Герб капитана мурзы Сабанака Кульмаметева», ниже акварельное изображение герба"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+  </div>
+</header>
+
+<script>
+  document.querySelector('.mobile-nav nav')?.addEventListener('click', () => {
+    document.querySelector('.mobile-nav')?.removeAttribute('open');
+  });
+</script>
+
+<style>
+  .hero {
+    overflow: hidden;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.25rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    text-decoration: none;
+  }
+
+  .brand img {
+    width: 26px;
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .desktop-nav a {
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+
+  .desktop-nav a:hover {
+    color: var(--gold);
+  }
+
+  .mobile-nav {
+    display: none;
+    position: relative;
+  }
+
+  .mobile-nav summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--line-on-ink);
+    font-size: 0.9375rem;
+  }
+
+  .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-nav nav {
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 12rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--paper);
+    color: var(--text);
+  }
+
+  .mobile-nav li + li {
+    border-top: 1px solid var(--line);
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding-block: 0.7rem;
+    text-decoration: none;
+  }
+
+  .stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    padding-top: clamp(2rem, 5vw, 4.5rem);
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  h1 {
+    margin-top: 1rem;
+    font-size: clamp(2.85rem, 7.4vw, 7rem);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+  }
+
+  .lead {
+    max-width: 34em;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+    line-height: 1.4;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.75rem;
+    margin-top: 2rem;
+  }
+
+  .actions a {
+    font-weight: 600;
+  }
+
+  .actions .primary {
+    padding: 0.8rem 1.5rem;
+    background: var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .actions .primary:hover {
+    background: var(--paper);
+  }
+
+  .source {
+    max-width: 30em;
+    margin-top: auto;
+    padding-top: 3rem;
+    font-size: 0.875rem;
+    color: var(--muted-on-ink);
+  }
+
+  /* The sheet stands on the bottom edge, cropped just below the coat of arms. */
+  .sheet {
+    align-self: end;
+    aspect-ratio: 1214 / 1520;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 55%);
+  }
+
+  @media (max-width: 900px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: block;
+    }
+
+    .stage {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .source {
+      margin-top: 0;
+      padding-top: 2rem;
+    }
+  }
+</style>

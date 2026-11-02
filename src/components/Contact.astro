@@ -1,0 +1,94 @@
+---
+import { Picture } from 'astro:assets';
+import { contacts } from '../data/home';
+import gathering from '../../images/legacy/200000091-snapedit-1706165480649.png';
+---
+
+<section id="contact" class="contact on-ink">
+  <Picture
+    src={gathering}
+    formats={['avif', 'webp']}
+    fallbackFormat="jpg"
+    widths={[640, 1080, 1600, 2200]}
+    sizes="100vw"
+    alt="Общая фотография участников первого собрания рода у здания Центра сибирско-татарской культуры, 2014 год"
+  />
+
+  <div class="wrap layout">
+    <div>
+      <p class="label">Собрание рода, 2014</p>
+      <h2>Вы из рода Кульмаметьевых?</h2>
+    </div>
+    <div class="reach">
+      <p>
+        Если в вашей семье сохранились документы, фотографии или рассказы
+        о предках, напишите нам. Так история рода становится полнее.
+      </p>
+      <a href={`mailto:${contacts.email}`}>{contacts.email}</a>
+      <p class="people">{contacts.people.join(', ')}</p>
+    </div>
+  </div>
+
+  <footer class="wrap">
+    <p>Источник герба: архив Герольдии, книга решённых дел 64, № дела 57.</p>
+    <p>Прототип главной страницы. Тексты и фото с текущего сайта рода.</p>
+  </footer>
+</section>
+
+<style>
+  .contact :global(img) {
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    object-position: 50% 62%;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem clamp(2.5rem, 6vw, 6rem);
+    padding-block: clamp(3rem, 7vw, 6rem);
+  }
+
+  h2 {
+    margin-top: 1rem;
+  }
+
+  .reach p:first-child {
+    max-width: 34em;
+  }
+
+  .reach a {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    color: var(--gold);
+    overflow-wrap: anywhere;
+  }
+
+  .people {
+    margin-top: 0.5rem;
+    color: var(--muted-on-ink);
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 2rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line-on-ink);
+    font-size: 0.875rem;
+    color: var(--muted-on-ink);
+  }
+
+  @media (max-width: 900px) {
+    .contact :global(img) {
+      aspect-ratio: 3 / 2;
+    }
+
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

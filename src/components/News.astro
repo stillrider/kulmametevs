@@ -1,0 +1,86 @@
+---
+import { allNewsHref, news } from '../data/home';
+---
+
+<section id="news" class="news">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <p class="label">Новости</p>
+        <h2>Последние события</h2>
+      </div>
+      <a href={allNewsHref}>Все новости</a>
+    </div>
+
+    <ul>
+      {
+        news.map((item) => (
+          <li>
+            <time datetime={item.date}>{item.label}</time>
+            <a href={item.href}>{item.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .news {
+    padding-block: var(--section);
+  }
+
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+
+  h2 {
+    margin-top: 1rem;
+  }
+
+  .top > a {
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--line);
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 0.25rem 1.5rem;
+    align-items: baseline;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--line);
+  }
+
+  time {
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  li a {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  @media (max-width: 600px) {
+    li {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

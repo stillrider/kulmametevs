@@ -1,0 +1,114 @@
+---
+import { Picture } from 'astro:assets';
+import { news } from '../data/home';
+import cover from '../../images/legacy/200000135-img-20240815-wa0007.jpeg';
+
+const article = news[1].href;
+---
+
+<section id="book" class="book on-ink">
+  <div class="wrap layout">
+    <figure>
+      <Picture
+        src={cover}
+        formats={['avif', 'webp']}
+        widths={[400, 640, 960]}
+        sizes="(max-width: 900px) 80vw, 30vw"
+        alt="Чёрная обложка книги «Мурзы Кульмаметьевы» с золотым тиснёным гербом"
+      />
+    </figure>
+
+    <div class="about">
+      <p class="label">Монография, 2024</p>
+      <h2>Власть и могущество</h2>
+      <p class="subtitle">Мурзы Кульмаметьевы. Книга 1 (XVII–XVIII вв.)</p>
+      <p>
+        Кандидат исторических наук Зайтуна Тычинских прослеживает, как род
+        возглавил тобольских служилых татар и какую роль сыграл в сохранении
+        исламских традиций Сибири.
+      </p>
+      <dl>
+        <div>
+          <dt>Автор</dt>
+          <dd>З. А. Тычинских, Тобольская комплексная научная станция УрО РАН</dd>
+        </div>
+        <div>
+          <dt>Редактор</dt>
+          <dd>Д. М. Исхаков</dd>
+        </div>
+        <div>
+          <dt>Награда</dt>
+          <dd>Диплом II степени, «Лучшая научная книга»</dd>
+        </div>
+      </dl>
+      <a href={article}>О книге и презентации в Тобольске</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .book {
+    padding-block: var(--section);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 7vw, 7rem);
+    align-items: center;
+  }
+
+  figure {
+    max-width: 30rem;
+    justify-self: end;
+  }
+
+  h2 {
+    margin-top: 1rem;
+  }
+
+  .subtitle {
+    margin-block: 0.75rem 1.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--muted-on-ink);
+  }
+
+  .about > p:not(.label, .subtitle) {
+    max-width: 36em;
+  }
+
+  dl {
+    margin-block: 2rem;
+    border-top: 1px solid var(--line-on-ink);
+  }
+
+  dl div {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 0.7rem;
+    border-bottom: 1px solid var(--line-on-ink);
+  }
+
+  dt {
+    color: var(--muted-on-ink);
+  }
+
+  a {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    figure {
+      max-width: 22rem;
+      justify-self: start;
+    }
+  }
+</style>
