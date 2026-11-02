@@ -1,24 +1,10 @@
 ---
-import { Picture } from 'astro:assets';
 import { contacts } from '../data/home';
-import gathering from '../../images/legacy/200000091-snapedit-1706165480649.png';
 ---
 
 <section id="contact" class="contact on-ink">
-  <Picture
-    src={gathering}
-    formats={['avif', 'webp']}
-    fallbackFormat="jpg"
-    widths={[640, 1080, 1600, 2200]}
-    sizes="100vw"
-    alt="Общая фотография участников первого собрания рода у здания Центра сибирско-татарской культуры, 2014 год"
-  />
-
   <div class="wrap layout">
-    <div>
-      <p class="label">Собрание рода, 2014</p>
-      <h2>Вы из рода Кульмаметьевых?</h2>
-    </div>
+    <h2>Вы из рода Кульмаметьевых?</h2>
     <div class="reach">
       <p>
         Если в вашей семье сохранились документы, фотографии или рассказы
@@ -36,21 +22,11 @@ import gathering from '../../images/legacy/200000091-snapedit-1706165480649.png'
 </section>
 
 <style>
-  .contact :global(img) {
-    aspect-ratio: 21 / 9;
-    object-fit: cover;
-    object-position: 50% 62%;
-  }
-
   .layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 2rem clamp(2.5rem, 6vw, 6rem);
     padding-block: clamp(3rem, 7vw, 6rem);
-  }
-
-  h2 {
-    margin-top: 1rem;
   }
 
   .reach p:first-child {
@@ -83,10 +59,6 @@ import gathering from '../../images/legacy/200000091-snapedit-1706165480649.png'
   }
 
   @media (max-width: 900px) {
-    .contact :global(img) {
-      aspect-ratio: 3 / 2;
-    }
-
     .layout {
       grid-template-columns: minmax(0, 1fr);
     }

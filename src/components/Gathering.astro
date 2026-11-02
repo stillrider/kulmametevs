@@ -1,0 +1,80 @@
+---
+import { Picture } from 'astro:assets';
+import gathering from '../../images/legacy/200000091-snapedit-1706165480649.png';
+---
+
+<section id="gathering" class="gathering">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <p class="label">2 августа 2014</p>
+        <h2>Первое собрание рода</h2>
+      </div>
+      <div class="about">
+        <p>
+          В Центре сибирско-татарской культуры встретились члены рода и гости:
+          представители музея-заповедника, архива и администрации Тобольска.
+          Встречу посвятили истории рода и 100-летию Мерхатуллы Кульмаметьева
+          (1914–1996).
+        </p>
+        <p>
+          Собрание открыл имам мечети деревни Сабанаки, а историк Зайтуна
+          Тычинских прочитала доклад о роде и его вкладе в сохранение культуры
+          сибирских татар.
+        </p>
+      </div>
+    </div>
+
+    <Picture
+      src={gathering}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpg"
+      widths={[640, 1080, 1600, 2200]}
+      sizes="(max-width: 1408px) 92vw, 82rem"
+      alt="Общая фотография участников первого собрания рода у здания Центра сибирско-татарской культуры, 2014 год"
+    />
+  </div>
+</section>
+
+<style>
+  .gathering {
+    padding-block: var(--section);
+    background: var(--paper-deep);
+  }
+
+  .intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.5rem clamp(2.5rem, 6vw, 6rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  h2 {
+    margin-top: 1rem;
+  }
+
+  .about p {
+    max-width: 36em;
+    color: var(--muted);
+  }
+
+  .about p + p {
+    margin-top: 0.75rem;
+  }
+
+  .gathering :global(img) {
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    object-position: 50% 62%;
+  }
+
+  @media (max-width: 900px) {
+    .intro {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .gathering :global(img) {
+      aspect-ratio: 3 / 2;
+    }
+  }
+</style>
