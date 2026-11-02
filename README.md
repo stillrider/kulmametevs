@@ -18,3 +18,7 @@ npm run dev
 - `src/data/home.ts` — тексты ленты времени, новости и контакты.
 - `src/styles/global.css` — цвета, шрифты и базовые стили.
 - `images/legacy/` — оригиналы изображений с текущего сайта на Webnode. Источник каждого файла указан в `manifest.json`.
+
+## Публикация
+
+При каждом пуше в `main` GitHub Actions собирает сайт и публикует его на GitHub Pages: <https://stillrider.github.io/kulmametevs/>.
