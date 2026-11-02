@@ -1,20 +1,20 @@
 ---
 import { Picture } from 'astro:assets';
 import { news } from '../data/home';
-import cover from '../../images/legacy/200000135-img-20240815-wa0007.jpeg';
+import cover from '../../images/legacy/200000141-yfyzrub6trq-1.jpeg';
 
 const article = news[1].href;
 ---
 
-<section id="book" class="book">
+<section id="book" class="book on-ink">
   <div class="wrap layout">
     <figure>
       <Picture
         src={cover}
         formats={['avif', 'webp']}
-        widths={[400, 640, 960]}
-        sizes="(max-width: 900px) 80vw, 30vw"
-        alt="Чёрная обложка книги «Мурзы Кульмаметьевы» с золотым тиснёным гербом"
+        widths={[480, 800, 1200, 1600]}
+        sizes="(max-width: 900px) 92vw, 44vw"
+        alt="Книга «Мурзы Кульмаметьевы» в чёрном переплёте с золотым тиснёным гербом, рядом стопка из трёх таких же книг"
       />
     </figure>
 
@@ -47,33 +47,15 @@ const article = news[1].href;
 </section>
 
 <style>
-  /* Heraldic blue keeps the black cover readable against the section. */
   .book {
-    --line-on-blue: rgb(241 233 216 / 35%);
     padding-block: var(--section);
-    background: var(--blue);
-    color: var(--paper);
-  }
-
-  .book :focus-visible {
-    outline-color: var(--paper);
-  }
-
-  .label {
-    color: var(--paper);
   }
 
   .layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
-    gap: clamp(2.5rem, 7vw, 7rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
     align-items: center;
-  }
-
-  figure {
-    max-width: 30rem;
-    justify-self: end;
-    box-shadow: 0 1.25rem 3rem rgb(0 0 0 / 40%);
   }
 
   h2 {
@@ -85,6 +67,7 @@ const article = news[1].href;
     font-family: var(--serif);
     font-style: italic;
     font-size: 1.3rem;
+    color: var(--muted-on-ink);
   }
 
   .about > p:not(.label, .subtitle) {
@@ -93,7 +76,7 @@ const article = news[1].href;
 
   dl {
     margin-block: 2rem;
-    border-top: 1px solid var(--line-on-blue);
+    border-top: 1px solid var(--line-on-ink);
   }
 
   dl div {
@@ -101,21 +84,21 @@ const article = news[1].href;
     grid-template-columns: 7rem minmax(0, 1fr);
     gap: 1rem;
     padding-block: 0.7rem;
-    border-bottom: 1px solid var(--line-on-blue);
+    border-bottom: 1px solid var(--line-on-ink);
+  }
+
+  dt {
+    color: var(--muted-on-ink);
   }
 
   a {
     font-weight: 600;
+    color: var(--gold);
   }
 
   @media (max-width: 900px) {
     .layout {
       grid-template-columns: minmax(0, 1fr);
-    }
-
-    figure {
-      max-width: 22rem;
-      justify-self: start;
     }
   }
 </style>
