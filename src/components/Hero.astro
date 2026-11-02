@@ -1,13 +1,14 @@
 ---
-import { Picture } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import { navigation } from '../data/home';
+import arms from '../assets/coat-of-arms.png';
 import sheet from '../../images/legacy/200000000-rgia-f1411op1d2l507.jpeg';
 ---
 
 <header class="hero on-ink">
   <div class="wrap bar">
     <a class="brand" href="/" aria-label="Мурзы Кульмаметьевы, на главную">
-      <img src="/favicon.svg" alt="" width="26" height="29" />
+      <Image src={arms} alt="" width={66} densities={[1, 2]} format="webp" loading="eager" />
       <span>Кульмаметьевы</span>
     </a>
     <nav class="desktop-nav" aria-label="Основная навигация">
@@ -85,7 +86,7 @@ import sheet from '../../images/legacy/200000000-rgia-f1411op1d2l507.jpeg';
   }
 
   .brand img {
-    width: 26px;
+    width: 66px;
   }
 
   .desktop-nav ul {
