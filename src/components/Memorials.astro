@@ -1,14 +1,14 @@
 ---
 import { Picture } from 'astro:assets';
-import relief from '../../images/legacy/200000145-img-20240813-084401-748.jpeg';
-import stele from '../../images/legacy/200000083-img-8126.jpeg';
-import plaque from '../../images/legacy/200000094-img-20200726-121357.jpeg';
+import plaque from '../assets/memorial-plaque.jpg';
+import relief from '../../images/legacy/200000144-img-20240812-183444.jpeg';
+import stele from '../../images/legacy/200000078-img-8108.jpeg';
 
 const memorials = [
   {
     image: stele,
     className: 'stele',
-    alt: 'Чёрная памятная стела с гербом и надписью «мурзы Кульмаметьевы, 1796 г.» на заснеженном поле',
+    alt: 'Чёрная памятная стела во весь рост на заснеженном поле: надписи на арабском и русском языках, родовой герб и подпись «мурзы Кульмаметьевы, 1796 г.»',
     place: 'Сабанаки, 2017',
     title: 'Памятная стела',
     text: 'Мусульманская стела возле родового имения.',
@@ -44,8 +44,8 @@ const memorials = [
             <Picture
               src={item.image}
               formats={['avif', 'webp']}
-              widths={[320, 480, 720]}
-              sizes="(max-width: 700px) 92vw, 30vw"
+              widths={[320, 480, 700]}
+              sizes="(max-width: 700px) 20rem, 30vw"
               alt={item.alt}
             />
             <p class="place">{item.place}</p>
@@ -76,16 +76,8 @@ const memorials = [
   }
 
   li :global(img) {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
-  }
-
-  .stele :global(img) {
-    object-position: 50% 28%;
-  }
-
-  .relief :global(img) {
-    object-position: 50% 20%;
   }
 
   .place {
@@ -108,6 +100,10 @@ const memorials = [
   @media (max-width: 700px) {
     ol {
       grid-template-columns: minmax(0, 1fr);
+    }
+
+    li :global(img) {
+      max-width: 20rem;
     }
   }
 </style>
